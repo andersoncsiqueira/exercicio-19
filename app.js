@@ -25,7 +25,7 @@ Ps2: o uso do Bootstrap (ou qualquer outra lib CSS) é opcional.
 
 const rightAnswers = ['B','A','B','A']
 const form = document.querySelector('form') 
-const paragraph = document.createElement('p')
+const finalResult = document.querySelector('.result')
 
 
 form.addEventListener('submit', event => {
@@ -42,11 +42,22 @@ form.addEventListener('submit', event => {
             score += 25
         }
     })
-    
-    form.insertAdjacentElement('beforeend', paragraph)
-    paragraph.textContent = `Você acertou ${score}% das questões sobre a Europa!`
-    paragraph.style.fontSize = '40px'
-    paragraph.style.textAlign = 'center'
-    paragraph.style.color = 'red'
 
+    scrollTo(0, 0)
+    
+    
+    finalResult.classList.remove('d-none')
+    
+    let counter = 0
+
+    const timer = setInterval(() => {
+
+        if(counter === score) {
+            clearInterval(timer)
+        }
+        finalResult.querySelector('span').textContent = `${counter}%`
+        counter++
+    }, 100);
+    
 })
+
