@@ -22,11 +22,42 @@ Link do repositório do curso: https://github.com/roger-melo-treinamentos/curso-
 Ps: se você não conseguiu fazer tudo o que foi pedido acima, abra a issue mesmo assim =)
 Ps2: o uso do Bootstrap (ou qualquer outra lib CSS) é opcional.
 */
-const rightAnswers = ['B','A','B','A']
+
+/*const rightAnswers = ['B','A','B','A','A','B']
 const form = document.querySelector('form') 
-const finalResult = document.querySelector('.result')
+const paragraph = document.createElement('p')
+
 
 form.addEventListener('submit', event => {
+    event.preventDefault()
+    let score = 0
+    const usersResponse = [
+        form.inputQuestion1.value,
+        form.inputQuestion2.value,
+        form.inputQuestion3.value,
+        form.inputQuestion4.value]
+
+    usersResponse.forEach( (response, index) => {
+        if(response === rightAnswers[index]) {
+            score += 16.666666666666666666666666666667
+        }
+    })
+    
+    form.insertAdjacentElement('beforeend', paragraph)
+    paragraph.textContent = `Você acertou ${score}% das questões sobre a Europa!`
+    paragraph.style.fontSize = '40px'
+    paragraph.style.textAlign = 'center'
+    paragraph.style.color = 'red'
+
+}) */
+
+const form = document.querySelector('.quiz-form')
+const finalResult = document.querySelector('.result')
+
+const correctAnswers = ['B','A','B','A','B','B']
+
+
+const insertScore = event => {
     event.preventDefault()
 
     let score = 0
@@ -34,27 +65,23 @@ form.addEventListener('submit', event => {
         form.inputQuestion1.value,
         form.inputQuestion2.value,
         form.inputQuestion3.value,
-        form.inputQuestion4.value]
-
-        userAnswers.forEach( (userAnswer, index) => {
-        if(userAnswer === rightAnswers[index]) {
-            score += 25
+        form.inputQuestion4.value,
+        form.inputQuestion5.value,
+        form.inputQuestion6.value
+    ]
+        scrollTo({top:0,
+            left:0,
+            behavior:'smooth'
+        })
+    userAnswers.forEach((userAnswer, index) => {
+        if(userAnswer === correctAnswers[index]) {
+            score += 16.666666666666666666666666666667
         }
+        
     })
+        finalResult.querySelector('span').textContent = `${Math.floor(score)}%`
+        finalResult.classList.remove('d-none')
+    }
 
-    scrollTo(0, 0)
-    
-    finalResult.classList.remove('d-none')
-    let counter = 0
 
-    const timer = setInterval(() => {
-
-        if(counter === score) {
-            clearInterval(timer)
-        }
-        finalResult.querySelector('span').textContent = `${counter}%`
-        counter++
-    }, 100);
-    
-})
-
+    form.addEventListener('submit', insertScore)
