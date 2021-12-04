@@ -22,32 +22,29 @@ Link do repositório do curso: https://github.com/roger-melo-treinamentos/curso-
 Ps: se você não conseguiu fazer tudo o que foi pedido acima, abra a issue mesmo assim =)
 Ps2: o uso do Bootstrap (ou qualquer outra lib CSS) é opcional.
 */
-
 const rightAnswers = ['B','A','B','A']
 const form = document.querySelector('form') 
 const finalResult = document.querySelector('.result')
 
-
 form.addEventListener('submit', event => {
     event.preventDefault()
+
     let score = 0
-    const usersResponse = [
+    const userAnswers = [
         form.inputQuestion1.value,
         form.inputQuestion2.value,
         form.inputQuestion3.value,
         form.inputQuestion4.value]
 
-    usersResponse.forEach( (response, index) => {
-        if(response === rightAnswers[index]) {
+        userAnswers.forEach( (userAnswer, index) => {
+        if(userAnswer === rightAnswers[index]) {
             score += 25
         }
     })
 
     scrollTo(0, 0)
     
-    
     finalResult.classList.remove('d-none')
-    
     let counter = 0
 
     const timer = setInterval(() => {
