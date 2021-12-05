@@ -53,9 +53,8 @@ form.addEventListener('submit', event => {
 
 const form = document.querySelector('.quiz-form')
 const finalResult = document.querySelector('.result')
-
-const correctAnswers = ['B','A','B','A','B','B']
-
+const correctAnswers = ['B','A','B','A','B',]
+let counter = 0
 
 const insertScore = event => {
     event.preventDefault()
@@ -67,7 +66,7 @@ const insertScore = event => {
         form.inputQuestion3.value,
         form.inputQuestion4.value,
         form.inputQuestion5.value,
-        form.inputQuestion6.value
+        
     ]
         scrollTo({top:0,
             left:0,
@@ -75,12 +74,26 @@ const insertScore = event => {
         })
     userAnswers.forEach((userAnswer, index) => {
         if(userAnswer === correctAnswers[index]) {
-            score += 16.666666666666666666666666666667
-        }
+            score += 20
+           
         
+        }
+            console.log(score, 'score')
     })
-        finalResult.querySelector('span').textContent = `${Math.floor(score)}%`
+        
         finalResult.classList.remove('d-none')
+
+        const timer = setInterval(()=>{
+            finalResult.querySelector('span').textContent = `${++counter}%`
+            console.log(counter, 'counter')
+           
+            if (counter === score) {
+                clearInterval(timer)
+                
+            }
+        },100)
+        
+        
     }
 
 
