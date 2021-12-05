@@ -53,7 +53,7 @@ form.addEventListener('submit', event => {
 
 const form = document.querySelector('.quiz-form')
 const finalResult = document.querySelector('.result')
-const correctAnswers = ['B','A','B','A','B',]
+const correctAnswers = ['B','A','B','A','B']
 let counter = 0
 
 const insertScore = event => {
@@ -65,7 +65,7 @@ const insertScore = event => {
         form.inputQuestion2.value,
         form.inputQuestion3.value,
         form.inputQuestion4.value,
-        form.inputQuestion5.value,
+        form.inputQuestion5.value
     ]
         scrollTo({top:0,
             left:0,
