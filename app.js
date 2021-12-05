@@ -66,7 +66,6 @@ const insertScore = event => {
         form.inputQuestion3.value,
         form.inputQuestion4.value,
         form.inputQuestion5.value,
-        
     ]
         scrollTo({top:0,
             left:0,
@@ -76,7 +75,6 @@ const insertScore = event => {
         if(userAnswer === correctAnswers[index]) {
             score += 20
         }
-            
     })
         
         finalResult.classList.remove('d-none')
