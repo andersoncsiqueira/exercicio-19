@@ -75,10 +75,8 @@ const insertScore = event => {
     userAnswers.forEach((userAnswer, index) => {
         if(userAnswer === correctAnswers[index]) {
             score += 20
-           
-        
         }
-            console.log(score, 'score')
+            
     })
         
         finalResult.classList.remove('d-none')
@@ -88,13 +86,9 @@ const insertScore = event => {
             console.log(counter, 'counter')
            
             if (counter === score) {
-                clearInterval(timer)
-                
+                clearInterval(timer)            
             }
         },100)
         
-        
     }
-
-
     form.addEventListener('submit', insertScore)
